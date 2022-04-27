@@ -2,6 +2,8 @@
 
 # Postgres script
 
+## ref: https://x-team.com/blog/storing-secure-passwords-with-postgresql/
+
 ```SQL
 CREATE SCHEMA alpha_profiler;
 
@@ -12,7 +14,7 @@ CREATE TABLE alpha_profiler.user(
 	username VARCHAR(50) NOT NULL,
 	password TEXT NOT NULL,
 	email VARCHAR(50) NOT NULL,
-    image VARCHAR(100) NOT NULL,
+    image TEXT NOT NULL,
 	date_birth DATE NOT NULL
 )
 
