@@ -1,4 +1,4 @@
-name: ci react
+name: ci react backend
 on: [push]
 
 jobs:
@@ -20,7 +20,6 @@ jobs:
             export NVM_DIR="$HOME/.nvm" 
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             npm install
-            npm run build
-            rm -r ${{ secrets.PROJECT_BUILD_PATH }}
-            mkdir ${{ secrets.PROJECT_BUILD_PATH }}
-            mv build/* ${{ secrets.PROJECT_BUILD_PATH }}
+            pm2 delete all
+            cd ${{ secrets.ECOSYSTEM_PATH }}
+            pm2 start ecosystem.config.js
