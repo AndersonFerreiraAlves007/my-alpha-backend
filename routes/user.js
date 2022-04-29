@@ -9,7 +9,7 @@ router.get('/', UserController.list)
 
 router.get('/:id', VerifyIdMiddleware, UserController.getOne)
 
-router.post('/', AutorizationMiddleware, UserController.create)
+router.post('/', UserController.create)
 
 router.put('/:id', VerifyIdMiddleware, AutorizationMiddleware, UserController.update)
 

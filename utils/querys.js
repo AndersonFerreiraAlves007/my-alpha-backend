@@ -1,5 +1,5 @@
 async function selectQuery (client, table, filters = {}) {
-  const keys = Object.keys(filters)
+  const keys = Object.entries(filters)
   const conditions = []
   const values = []
   for (let i = 0; i < keys.length; i++) {
@@ -17,7 +17,7 @@ async function selectQuery (client, table, filters = {}) {
 }
 
 async function updateQuery (client, table, id, body, userId) {
-  const keys = Object.keys(body)
+  const keys = Object.entries(body)
   const fields = []
   const values = []
   for (let i = 0; i < keys.length; i++) {
@@ -38,7 +38,7 @@ async function deleteQuery (client, table, id, userId) {
 }
 
 async function createQuery (client, table, body, userId) {
-  const keys = Object.keys(body)
+  const keys = Object.entries(body)
   const fields = []
   const positions = []
   const values = []

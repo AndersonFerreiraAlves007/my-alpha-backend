@@ -1,8 +1,8 @@
 const Model = require('../templates/model')
 
 class User extends Model {
-  constructor () {
-    super('users')
+  constructor (userId = null) {
+    super('users', userId)
   }
 }
 

@@ -1,6 +1,6 @@
 const { decodeTokenJwt } = require('../utils/token')
 
-module.exports = (req, res, next) => {
+module.exports = async (req, res, next) => {
   const token = req.cookies.access_token
   if (!token) {
     return res.status(403).json({
@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     })
   }
   try {
-    const data = decodeTokenJwt(token)
+    const data = await decodeTokenJwt(token)
     req.user_id = data.user_id
     return next()
   } catch {

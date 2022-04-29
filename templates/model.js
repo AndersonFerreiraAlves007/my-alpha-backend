@@ -21,6 +21,7 @@ class Model {
 
   async create (body) {
     const client = await getClient()
+    console.log('lalala', body)
     const result = await createQuery(client, this.table, body, this.userId)
     await client.end()
     return result[0]
