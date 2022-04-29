@@ -4,6 +4,7 @@
 
 ## ref: https://x-team.com/blog/storing-secure-passwords-with-postgresql/
 
+
 ```SQL
 CREATE TABLE public.users (
 	"id" serial NOT NULL,
