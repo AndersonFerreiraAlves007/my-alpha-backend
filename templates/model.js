@@ -12,21 +12,21 @@ class Model {
     this.userId = userId
   }
 
-  async getList (filters = {}) {
+  async view (filters = {}) {
     const client = await getClient()
     const result = await selectQuery(client, this.table, filters)
     await client.end()
     return result
   }
 
-  async create (body) {
+  async insert (body) {
     const client = await getClient()
     const result = await createQuery(client, this.table, body, this.userId)
     await client.end()
     return result[0]
   }
 
-  async update (id, body) {
+  async edit (id, body) {
     const client = await getClient()
     const result = await updateQuery(client, this.table, id, body, this.userId)
     await client.end()

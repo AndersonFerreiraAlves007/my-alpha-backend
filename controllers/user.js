@@ -6,7 +6,7 @@ module.exports = {
   list: async function (req, res) {
     try {
       const userModel = new User()
-      const result = await userModel.getList()
+      const result = await userModel.view()
       res.status(200).json(result)
     } catch (e) {
       res.status(400).json({ message: e })
@@ -15,7 +15,7 @@ module.exports = {
   getOne: async function (req, res) {
     try {
       const userModel = new User()
-      const result = await userModel.getList({ id: req.id })
+      const result = await userModel.view({ id: req.id })
       res.status(200).json(result[0])
     } catch (e) {
       res.status(400).json({ message: e })
@@ -24,7 +24,7 @@ module.exports = {
   create: async function (req, res) {
     try {
       const userModel = new User()
-      const result = await userModel.create({
+      const result = await userModel.insert({
         ...req.body,
         password: await generateHashPassword(req.body.password)
       })
@@ -36,7 +36,7 @@ module.exports = {
   update: async function (req, res) {
     try {
       const userModel = new User(req.user_id)
-      const result = await userModel.update(req.id, req.body.password
+      const result = await userModel.edit(req.id, req.body.password
         ? {
             ...req.body,
             password: await generateHashPassword(req.body.password)
@@ -61,7 +61,7 @@ module.exports = {
   login: async function (req, res) {
     try {
       const userModel = new User()
-      const [user] = await userModel.getList({
+      const [user] = await userModel.view({
         email: req.body.email
       })
       if (user) {
