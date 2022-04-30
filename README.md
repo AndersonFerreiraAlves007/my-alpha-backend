@@ -8,7 +8,8 @@
 ```SQL
 CREATE TABLE public.users (
 	"id" serial NOT NULL,
-	"username" varchar(40) NOT NULL,
+	"name" varchar(80) NOT NULL,
+	"email" varchar(320) NOT NULL UNIQUE,
 	"password" varchar(80) NOT NULL,
 	"image" TEXT NOT NULL,
 	"birth_date" DATE NOT NULL,

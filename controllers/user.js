@@ -62,7 +62,7 @@ module.exports = {
     try {
       const userModel = new User()
       const [user] = await userModel.getList({
-        username: req.body.username
+        email: req.body.email
       })
       if (user) {
         if (await compareHashPassword(req.body.password, user.password)) {
