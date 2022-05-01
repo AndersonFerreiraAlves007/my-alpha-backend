@@ -19,7 +19,7 @@ const schemaCreate = yup.object().shape({
     .string('Este campo deve ser uma string')
     .required('Este campo é obrigatório')
     .trim()
-    .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,20}$/, 'A senha deve ter de 6 a 20 caracteres (formado por letras e números) com no mínimo 1 maiúscula, 1 minúscula e 1 número') // Deve ter de 6 a 20 caracteres (formado por letras e números) com no mínimo 1 maiúscula, 1 minúscula e 1 número
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'A senha deve ter no mínimo 8 caracteres e pelo menos 1 número') // Deve ter de 6 a 20 caracteres (formado por letras e números) com no mínimo 1 maiúscula, 1 minúscula e 1 número
 })
 
 const schemaUpdate = yup.object().shape({
@@ -38,7 +38,7 @@ const schemaUpdate = yup.object().shape({
   password: yup
     .string('Este campo deve ser uma string')
     .trim()
-    .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,20}$/, 'A senha deve ter de 6 a 20 caracteres (formado por letras e números) com no mínimo 1 maiúscula, 1 minúscula e 1 número')
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'A senha deve ter no mínimo 8 caracteres e pelo menos 1 número')
 })
 
 const schemaLogin = yup.object().shape({
@@ -51,7 +51,7 @@ const schemaLogin = yup.object().shape({
     .string('Este campo deve ser uma string')
     .trim()
     .required('Este campo é obrigatório')
-    .matches(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{6,20}$/, 'A senha deve ter de 6 a 20 caracteres (formado por letras e números) com no mínimo 1 maiúscula, 1 minúscula e 1 número')
+    .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, 'A senha deve ter no mínimo 8 caracteres e pelo menos 1 número')
 })
 
 const validateCreate = async (req, res, next) => {
