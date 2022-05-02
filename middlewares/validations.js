@@ -56,8 +56,10 @@ const schemaLogin = yup.object().shape({
 
 const validateCreate = async (req, res, next) => {
   try {
+    const image = req.body.image
     const bodyValidate = await schemaCreate.validate(req.body)
     req.body = bodyValidate
+    req.body.image = image
     console.log('anderson risadinha', bodyValidate)
     next()
   } catch (e) {
@@ -67,8 +69,10 @@ const validateCreate = async (req, res, next) => {
 
 const validateUpdate = async (req, res, next) => {
   try {
+    const image = req.body.image
     const bodyValidate = await schemaUpdate.validate(req.body)
     req.body = bodyValidate
+    req.body.image = image
     next()
   } catch (e) {
     res.status(400).send(e.errors.join(','))
